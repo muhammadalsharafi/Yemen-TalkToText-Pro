@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audio to Text Converter</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <div class="night" id="aurora"></div>
+
+  <div class="container">
+    <div class="history">
+      <div class="history-header">
+        <h3>Conversion History</h3>
+        <button class="clear-history-btn" title="Clear all history" id="clearHistoryBtn">
+          <i class="fas fa-trash-alt"></i>
+        </button>
+      </div>
+      
+      <div class="history-search">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Search history..." class="search-input" id="historySearch">
+      </div>
+      
+      <div class="history-list" id="historyList">
+        <div class="history-empty" id="historyEmpty">
+          <i class="fas fa-history"></i>
+          <p>No conversion history yet</p>
+          <span>Your audio-to-text conversions will appear here</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="chatbot" id="mainContainer">
+      <div class="upload-view" id="uploadView">
+        <div class="converter-header">
+          <div class="header-container">
+            <div class="logo">
+              <div>
+                <div class="logo-text">Yemen TalkToTest Pro</div>
+                <div class="header-tagline">Fast AI Speech to Text Tool</div>
+              </div>
+            </div>
+            
+            <button class="login-button" id="logoutButton" style="margin-left: 5px;">Log out</button>
+          </div>
+        </div>
+
+        <div class="upload-container">
+          <div class="header-features">
+            <div class="feature-item">
+              <div class="feature-title">Transcription Accuracy</div>
+              <div class="feature-value accuracy-medium">
+                <div class="language-selector">
+                  <i class="fas fa-globe"></i>
+                  <select id="accuracySelect">
+                    <option>Auto</option>
+                    <option>High</option>
+                    <option>Medium</option>
+                    <option>Low</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            
+            <div class="feature-item">
+              <div class="feature-title">Summary Language</div>
+              <div class="feature-value accuracy-high">
+                <div class="language-selector">
+                  <i class="fas fa-globe"></i>
+                  <select id="languageSelect">
+                        <option>Auto</option>
+                        <option>Afrikaans</option>
+                        <option>Albanian</option>
+                        <option>Amharic</option>
+                        <option>Arabic</option>
+                        <option>Armenian</option>
+                        <option>Azerbaijani</option>
+                        <option>Basque</option>
+                        <option>Belarusian</option>
+                        <option>Bengali</option>
+                        <option>Bosnian</option>
+                        <option>Bulgarian</option>
+                        <option>Burmese</option>
+                        <option>Catalan</option>
+                        <option>Chinese</option>
+                        <option>Croatian</option>
+                        <option>Czech</option>
+                        <option>Danish</option>
+                        <option>Dutch</option>
+                        <option>English</option>
+                        <option>Estonian</option>
+                        <option>Finnish</option>
+                        <option>French</option>
+                        <option>Georgian</option>
+                        <option>German</option>
+                        <option>Greek</option>
+                        <option>Gujarati</option>
+                        <option>Hebrew</option>
+                        <option>Hindi</option>
+                        <option>Hungarian</option>
+                        <option>Icelandic</option>
+                        <option>Indonesian</option>
+                        <option>Italian</option>
+                        <option>Japanese</option>
+                        <option>Kannada</option>
+                        <option>Kazakh</option>
+                        <option>Khmer</option>
+                        <option>Korean</option>
+                        <option>Lao</option>
+                        <option>Latvian</option>
+                        <option>Lithuanian</option>
+                        <option>Macedonian</option>
+                        <option>Malayalam</option>
+                        <option>Marathi</option>
+                        <option>Mongolian</option>
+                        <option>Nepali</option>
+                        <option>Norwegian</option>
+                        <option>Persian</option>
+                        <option>Polish</option>
+                        <option>Portuguese</option>
+                        <option>Punjabi</option>
+                        <option>Romanian</option>
+                        <option>Russian</option>
+                        <option>Serbian</option>
+                        <option>Sinhala</option>
+                        <option>Slovak</option>
+                        <option>Slovenian</option>
+                        <option>Spanish</option>
+                        <option>Swahili</option>
+                        <option>Swedish</option>
+                        <option>Tamil</option>
+                        <option>Telugu</option>
+                        <option>Thai</option>
+                        <option>Turkish</option>
+                        <option>Ukrainian</option>
+                        <option>Urdu</option>
+                        <option>Vietnamese</option>
+                        <option>Welsh</option>
+                        <option>Xhosa</option>
+                        <option>Zulu</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="upload-box">
+            <i class="fas fa-file-audio upload-icon"></i>
+            <p class="upload-text">Upload or drag an audio here.</p>
+            <small class="upload-info">
+              up to 3 tasks in queue.<br>
+              Supported file formats are:
+              <span style="display:block;"></span>
+              mp3, wav, m4a, wma, mp4, mov, avi, mkv, wmv, flv, webm, mpeg, 3gp.
+            </small>
+
+            <div class="button-group">
+              <input type="file" id="fileInput" accept=".mp3,.wav,.m4a,.wma,.mp4,.mov,.avi,.mkv,.wmv,.flv,.webm,.mpeg,.3gp" multiple style="display: none;">
+              <button class="upload-button" id="uploadButton">Upload Audio</button>
+              <button class="url-button" id="urlToggleBtn"><i class="fas fa-link"></i></button>
+            </div>
+
+            <div class="url-panel" id="urlPanel">
+              <div class="panel-title">Upload from URL</div>
+              <div class="panel-subtitle">you can insert more than one URL just type a "," between each URL</div>
+
+              <div class="url-input-wrapper">
+                <input class="url-input" id="fileUrl" placeholder="https://example.com/file.mp3" type="text" />
+                <button class="url-submit-btn" id="submitUrl"><i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="results-view" id="resultsView" style="display: none;">
+        <div class="results-header">
+          <button class="back-button" id="backButton">
+            <i class="fas fa-arrow-left"></i> Back to Upload
+          </button>
+          <h3 id="resultsTitle">Transcription Results</h3>
+          <div class="results-actions">
+            <button class="action-btn" title="Copy all text" id="copyAllBtn">
+              <i class="fas fa-copy"></i> 
+            </button>
+            <button class="action-btn" title="Download as text file" id="downloadBtn">
+              <i class="fas fa-download"></i>
+            </button>
+          </div>
+        </div>
+        
+        <div class="results-container">
+          <div class="format-selector" id="formatSelector">
+            <button class="format-btn active" data-format="rawTranscript">Raw Transcript</button>
+            <button class="format-btn" data-format="cleanedTranscript">Cleaned Transcript</button>
+            <button class="format-btn" data-format="fullReport">Full Report</button>
+            <button class="format-btn" data-format="translatedReport">Translated Report</button>
+          </div>
+          
+          <div class="results-content" id="resultsContent">
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

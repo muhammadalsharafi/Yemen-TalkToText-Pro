@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+  <div class="center-glow"></div>
+  <div class="ball animated-ball"></div>
+  <div class="ball animated-ball"></div>
+  <div class="ball animated-ball"></div>
+  <div class="ball animated-ball"></div>
+<div class="login-container">
+<div class="login-left">
+  <img src="{{ url_for('static', filename='images/sign_up/46c45b3d22aba2930efd7788532ee2b5.jpg') }}" 
+       alt="Login Image" class="bg-image">
+
+  <img src="{{ url_for('static', filename='images/login/logo2.png') }}" 
+       alt="Floating Image" class="floating-image">
+</div>
+
+  <div class="login-right">
+    <h2>LOGIN</h2>
+    <input type="email" placeholder="Email" id="email">
+    <input type="password" placeholder="Password" id="password">
+    <button class="create-btn" id="submit-btn-login">Login</button>
+    <div class="divider"><span>OR</span></div>
+    <div style="text-align: center;">
+      <p>Don't have an account? <a href="{{ url_for('signup') }}">Sign up</a></p>
+    </div>
+  </div>
+</div>
+  <div class="ball mouse-ball"></div>
+  <script src="{{ url_for('static', filename='js/Signup_login.js') }}"></script>
+</body>
+</html>
