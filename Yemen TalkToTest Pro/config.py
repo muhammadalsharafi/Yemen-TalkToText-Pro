@@ -32,9 +32,9 @@ TEXT_CHUNK_SIZE_CHARS = 50000
 
 # AI Model Configuration
 WHISPER_MODEL = "whisper-1"
-SUMMARIZATION_MODEL = "gpt-4o"          # Model for generating summaries.
-TRANSLATION_MODEL = "gpt-4o"       # Model for translating transcripts and summaries.
-CLASSIFICATION_MODEL = "gpt-4o"    # A fast, cheap model for simple classification tasks.
+SUMMARIZATION_MODEL = "gpt-5"          # Model for generating summaries.
+TRANSLATION_MODEL = "gpt-5-mini"       # Model for translating transcripts and summaries.
+CLASSIFICATION_MODEL = "gpt-5-nano"    # A fast, cheap model for simple classification tasks.
 PRE_SCREEN_DURATION_SECONDS = 120  # Duration for initial content relevance check
 
 # System Prompts
