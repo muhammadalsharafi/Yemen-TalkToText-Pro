@@ -144,6 +144,8 @@ Results are stored in MongoDB.
 
 ---
 
+### [Blog Link](https://dev.to/sarah_thafer_51a73ef6f68a/from-audio-to-action-how-yemenai-talktotext-pro-automates-meeting-documentation-4od6)
+
 ## Sources and References
 
 ### Command Engineering
